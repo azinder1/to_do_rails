@@ -1,0 +1,9 @@
+<h1>Chores</h1>
+
+<ul>
+  <% @chores.each do |chore| %>
+    <li><%= link_to chore.name, chore_path(chore) %></li>
+  <% end %>
+</ul>
+
+<%=link_to "New Chore", new_chore_path %>

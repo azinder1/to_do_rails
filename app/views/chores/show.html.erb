@@ -1,0 +1,26 @@
+<h1><%= @chore.name %></h1>
+
+<% if @chore.jobs.any? %>
+  <h4>Here are the jobs for this chore:</h4>
+
+  <ul>
+    <% @chore.jobs.each do |job| %>
+      <li>
+        <%= job.description %> |
+        <%= link_to "Edit", edit_chore_job_path(@chore, job) %> |
+        <%= link_to "Delete", chore_job_path(@chore, job),
+                                 :data => {:confirm => "Are you sure?",
+                                                :method => "delete"} %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no jobs yet!</p>
+<% end %>
+
+<p><%= link_to "Add a job", new_chore_job_path(@chore) %></p>
+<p><%= link_to "Delete List", chore_path(@chore),
+                        :data => {:confirm => "Are you sure?",
+                                       :method => "delete"} %></p>
+
+<p><%= link_to "Return to chores", chores_path %></p>
